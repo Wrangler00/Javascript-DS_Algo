@@ -1,0 +1,47 @@
+class TreeNode{
+  constructor(val){
+    this.val = val;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+let ROOT = new TreeNode(1);
+
+function insertNode(pNode,val){
+  if(pNode == null){
+    return;
+  }
+
+  if(pNode.val >= val){
+    if(pNode.left == null){
+      pNode.left = new TreeNode(val);
+    }else {
+      insertNode(pNode.left,val);
+    }
+  }else{
+    if(pNode.right == null){
+      pNode.right = new TreeNode(val);
+    }else {
+      insertNode(pNode.right,val);
+    }
+  }
+
+  return;
+}
+
+function preorder(pNode){
+  if(pNode == null)
+    return;
+
+  console.log(pNode.val);
+
+  preorder(pNode.left);
+  preorder(pNode.right);
+  return;
+}
+
+insertNode(ROOT,7);
+insertNode(ROOT,2);
+
+preorder(ROOT);
