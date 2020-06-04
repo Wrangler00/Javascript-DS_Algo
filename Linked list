@@ -1,0 +1,54 @@
+class LinkNode{
+  constructor(val){
+    this.val = val;
+    this.next = null;
+  }
+}
+
+class LinkedList{
+  constructor(){
+    this.root = null;
+  }
+
+  insert(val){
+    if(this.root == null){
+      this.root = new LinkNode(val);
+      return;
+    }else{
+      this.insertNode(this.root,val);
+    }
+  }
+  insertNode(node,val){
+    // console.log(val);
+
+    if(node.next == null){
+      node.next = new LinkNode(val);
+    }else{
+      this.insertNode(node.next,val);
+    }
+    
+    return;
+  }
+
+  traverse(pNode){
+    if(pNode == null)
+      return;
+    console.log(pNode.val);
+    this.traverse(pNode.next);
+    return;
+  }
+
+  getRoot(){
+    return this.root;
+  }
+}
+
+let LL = new LinkedList();
+
+
+LL.insert(10);
+LL.insert(11);
+LL.insert(1);
+
+let root = LL.getRoot();
+LL.traverse(root);
